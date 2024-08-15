@@ -1,0 +1,33 @@
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Build artifacts
+*.so
+*.dylib
+*.dll
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+.env.*
+
+# Data files
+/data/*.json
+/data/*.key
+/data/keyshare.*
+
+# Logs
+*.log
+logs/
+
+# Test artifacts
+*.profraw
+coverage/

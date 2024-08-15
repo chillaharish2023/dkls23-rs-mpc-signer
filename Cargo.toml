@@ -1,0 +1,93 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/dkls23-core",
+    "crates/msg-relay",
+    "crates/msg-relay-svc",
+    "crates/msg-relay-client",
+    "crates/dkls-party",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Cătălin Dinu"]
+license = "MIT"
+repository = "https://github.com/Kazopl/dkls23-mpc-signer"
+
+[workspace.dependencies]
+# Cryptographic primitives
+k256 = { version = "0.13", features = ["ecdsa", "sha256", "arithmetic"] }
+elliptic-curve = { version = "0.13", features = ["sec1", "arithmetic", "alloc"] }
+sha2 = "0.10"
+sha3 = "0.10"
+blake3 = { version = "1.5", features = ["pure"] }
+hmac = "0.12"
+aead = "0.5"
+chacha20poly1305 = "0.10"
+x25519-dalek = { version = "2.0", features = ["reusable_secrets", "zeroize"] }
+ed25519-dalek = "2.0"
+merlin = "3.0"
+subtle = { version = "2.5", default-features = false, features = ["const-generics"] }
+zeroize = { version = "1.7", features = ["derive"] }
+
+# Encoding
+hex = "0.4"
+base64 = "0.21"
+bs58 = "0.5"
+bincode = "2.0.0-rc.3"
+
+# BIP32 derivation
+derivation-path = "0.2"
+
+# Hashing
+tiny-keccak = { version = "2.0", features = ["keccak"] }
+ripemd = "0.1"
+digest = "0.10"
+
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+tokio-tungstenite = { version = "0.21", features = ["native-tls"] }
+futures-util = { version = "0.3", features = ["sink"] }
+
+# Web framework
+axum = { version = "0.7", features = ["ws"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Parallelism
+rayon = "1.8"
+
+# Randomness
+rand = "0.8"
+rand_core = "0.6"
+rand_chacha = "0.3"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# CLI
+clap = { version = "4.4", features = ["derive", "env"] }
+
+# Utilities
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+dashmap = "5.5"
+async-trait = "0.1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[profile.dev]
+opt-level = 1
