@@ -1,0 +1,25 @@
+[package]
+name = "dkls-party"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "CLI party node for DKLs23 MPC operations"
+
+[[bin]]
+name = "dkls-party"
+path = "src/main.rs"
+
+[dependencies]
+dkls23-core = { path = "../dkls23-core" }
+msg-relay-client = { path = "../msg-relay-client" }
+
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+clap.workspace = true
+hex.workspace = true
